@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --light-gray: #4b4c4d;
+  --violet: #6f62d4;
+  --light-violet: #efeaff;
+  --violet-900: #fbf6ff;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}

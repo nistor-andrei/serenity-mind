@@ -1,0 +1,57 @@
+import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
+import "styles/globals.css";
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+});
+
+export const metadata: Metadata = {
+  title: "SerenityMind – Sleep Better, Reduce Anxiety, and Find Inner Balance",
+  description:
+    "SerenityMind is your personalized wellness companion designed to improve sleep, reduce anxiety, and support emotional clarity through guided journaling, mindfulness, and self-discovery.",
+  keywords: [
+    "SerenityMind",
+    "sleep app",
+    "reduce anxiety",
+    "emotional wellness",
+    "mental clarity",
+    "guided journaling",
+    "mindfulness",
+    "spiritual wellness",
+    "calm sleep",
+    "relaxation techniques",
+  ],
+  authors: [{ name: "SerenityMind Team" }],
+  creator: "SerenityMind",
+  openGraph: {
+    title:
+      "SerenityMind – Sleep Better, Reduce Anxiety, and Find Inner Balance",
+    description:
+      "Experience better sleep, less anxiety, and deeper emotional awareness with SerenityMind – your holistic wellness companion.",
+    url: "https://yourdomain.com",
+    siteName: "SerenityMind",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SerenityMind – Sleep, Peace, and Emotional Clarity",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${openSans.variable} antialiased`}>{children}</body>
+    </html>
+  );
+}
