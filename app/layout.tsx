@@ -4,6 +4,7 @@ import "styles/globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
       "SerenityMind – Sleep Better, Reduce Anxiety, and Find Inner Balance",
     description:
       "Experience better sleep, less anxiety, and deeper emotional awareness with SerenityMind – your holistic wellness companion.",
-    url: "https://yourdomain.com",
     siteName: "SerenityMind",
     images: [
       {
