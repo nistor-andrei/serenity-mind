@@ -33,14 +33,14 @@ jobs:
           node-version: 20
       - run: yarn install
       - run: yarn build
-      - run: yarn start &
+      - run: yarn dev &
       - uses: jakejarvis/wait-action@v0.1.1
         with:
           url: http://localhost:3000
           timeout: 60
+      - run: npx cypress install
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          start: yarn start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 60
