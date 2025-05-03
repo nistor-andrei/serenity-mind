@@ -9,6 +9,9 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "SerenityMind – Sleep Better, Reduce Anxiety, and Find Inner Balance",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
   description:
     "SerenityMind is your personalized wellness companion designed to improve sleep, reduce anxiety, and support emotional clarity through guided journaling, mindfulness, and self-discovery.",
   keywords: [
