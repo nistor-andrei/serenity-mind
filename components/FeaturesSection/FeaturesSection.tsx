@@ -29,7 +29,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-16 px-6 bg-[var(--violet-900)]">
+    <section id="features" className="py-16 px-6 bg-white scroll-mt-16">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-dark mb-2  bg-clip-text">
           What SerenityMind Can Do for You
@@ -42,7 +42,7 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center text-center"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center text-center"
             >
               <div className="mb-4">{feature.icon}</div>
               <h3 className="text-lg font-semibold text-dark mb-2">
