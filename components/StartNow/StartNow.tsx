@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const StartNow = () => {
   return (
-    <section className="bg-violet-300 mx-20 my-10 rounded-4xl text-white flex flex-col items-center py-10">
+    <section className="bg-[var(--light-violet)] mx-20 my-10 rounded-4xl text-neutral-800 flex flex-col items-center py-10">
       <Image src="/cta.svg" alt="Cta" width={300} height={150} />
       <h2 className="text-3xl font-bold mb-4">
         Your Journey to Inner Peace Begins Here

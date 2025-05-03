@@ -2,7 +2,10 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="flex bg-[var(--light-violet)] px-20  justify-between ">
+    <div
+      id="hero"
+      className="flex bg-[var(--light-violet)] px-20  justify-between scroll-mt-20"
+    >
       <section className="pt-16 px-4 flex justify-start flex-col ">
         <h1 className="text-5xl md:text-6xl font-bold mb-1">Better sleep.</h1>
         <h2 className="text-5xl md:text-6xl font-bold mb-4"> Clearer mind.</h2>
