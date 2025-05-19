@@ -2,15 +2,12 @@ import { steps } from "./utils";
 
 export const HowItWorks = () => {
   return (
-    <section
-      id="how-it-works"
-      className="bg-[var(--violet)] py-12 scroll-mt-20"
-    >
+    <section id="how-it-works" className="bg-violet py-12 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-3xl  text-white font-bold mb-2 ">
           How SerenityMind Works
         </h2>
-        <p className="text-md text-[var(--light-violet)] mb-12">
+        <p className="text-md text-light-violet mb-12">
           A simple, calming journey to help you find balance and peace.
         </p>
         <div className="flex flex-wrap  gap-8 justify-center">
@@ -23,7 +20,7 @@ export const HowItWorks = () => {
               <h3 className="text-xl font-semibold text-white ">
                 {step.title}
               </h3>
-              <p className="text-sm text-[var(--light-violet)] mt-2">
+              <p className="text-sm text-light-violet mt-2">
                 {step.description}
               </p>
             </div>
