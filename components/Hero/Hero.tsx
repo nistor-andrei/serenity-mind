@@ -4,16 +4,16 @@ const Hero = () => {
   return (
     <div
       id="hero"
-      className="flex bg-[var(--light-violet)] px-20  justify-between scroll-mt-20"
+      className="flex bg-light-violet px-20  justify-between scroll-mt-20"
     >
       <section className="pt-16 px-4 flex justify-start flex-col ">
         <h1 className="text-5xl md:text-6xl font-bold mb-1">Better sleep.</h1>
         <h2 className="text-5xl md:text-6xl font-bold mb-4"> Clearer mind.</h2>
-        <p className="mb-6 text-left w-lg min-w-52 text-[var(--light-gray)]">
+        <p className="mb-6 text-left w-lg min-w-52 text-light-gray">
           Discover how restful sleep, reduced anxiety, and emotional awareness
           can change your life.
         </p>
-        <button className="self-start bg-[var(--violet)] cursor-pointer text-white font-semibold px-8 py-4 rounded-2xl text-sm md:text-base hover:opacity-90 transition">
+        <button className="self-start bg-violet cursor-pointer text-white font-semibold px-8 py-4 rounded-2xl text-sm md:text-base hover:opacity-90 transition">
           Start your journey
         </button>
       </section>

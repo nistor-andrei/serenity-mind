@@ -34,7 +34,7 @@ export default function FeaturesSection() {
         <h2 className="text-2xl md:text-3xl font-bold text-dark mb-2  bg-clip-text">
           What SerenityMind Can Do for You
         </h2>
-        <p className="text-md text-[var(--light-gray)] mb-12">
+        <p className="text-md text-light-gray mb-12">
           Reduce stress, calm anxiety, and improve sleep with personalized
           guidance.
         </p>

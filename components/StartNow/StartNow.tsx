@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const StartNow = () => {
   return (
-    <section className="bg-[var(--light-violet)] mx-20 my-10 rounded-4xl text-neutral-800 flex flex-col items-center py-10">
+    <section className="bg-light-violet mx-20 my-10 rounded-4xl text-neutral-800 flex flex-col items-center py-10">
       <Image src="/cta.svg" alt="Cta" width={300} height={150} />
       <h2 className="text-3xl font-bold mb-4">
         Your Journey to Inner Peace Begins Here
@@ -12,7 +12,7 @@ const StartNow = () => {
         yourself. SerenityMind guides you every step of the way toward a more
         harmonious life.
       </p>
-      <button className=" bg-[var(--violet)]  cursor-pointer text-white font-semibold px-8 py-4 rounded-2xl text-sm md:text-base hover:opacity-90 transition">
+      <button className=" bg-violet  cursor-pointer text-white font-semibold px-8 py-4 rounded-2xl text-sm md:text-base hover:opacity-90 transition">
         Join now
       </button>
     </section>
