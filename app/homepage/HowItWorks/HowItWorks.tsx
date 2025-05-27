@@ -1,6 +1,6 @@
 import { steps } from "./utils";
 
-export const HowItWorks = () => {
+const HowItWorks = () => {
   return (
     <section id="how-it-works" className="bg-violet py-12 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 text-center">
@@ -30,3 +30,5 @@ export const HowItWorks = () => {
     </section>
   );
 };
+
+export default HowItWorks;

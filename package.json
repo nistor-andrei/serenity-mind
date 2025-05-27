@@ -11,11 +11,15 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
+    "@xenova/transformers": "^2.17.2",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --light-gray: #4b4c4d;
-  --violet: #805ad5;
-  --light-violet: #e9d5ff;
-  --violet-900: #fbf6ff;
+  --color-light-gray: #4b4c4d;
+  --color-violet: #805ad5;
+  --color-light-violet: #e9d5ff;
+  --color-violet-900: #fbf6ff;
 }
 
 body {

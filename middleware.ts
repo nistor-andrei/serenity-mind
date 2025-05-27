@@ -1,32 +1,23 @@
+import { createClient } from "lib/supabaseServer";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const protectedRoutes = ["/platform"];
+export async function middleware(request: NextRequest) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-export function middleware(request: NextRequest) {
-  const isProtected = protectedRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route)
-  );
-  const isLogin = request.nextUrl.pathname === "/login";
-
-  const isLoggedIn = request.cookies
-    .getAll()
-    .some(
-      (cookie) =>
-        cookie.name.startsWith("sb-") && cookie.name.includes("-auth-token.")
-    );
-
-  if (isProtected && !isLoggedIn) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
-  if (isLogin && isLoggedIn) {
-    return NextResponse.redirect(new URL("/platform", request.url));
+  if (!user && request.nextUrl.pathname.startsWith("/platform")) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/login";
+    redirectUrl.searchParams.set("next", request.nextUrl.pathname);
+    return NextResponse.redirect(redirectUrl);
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/platform/:path*", "/login"],
+  matcher: ["/platform/:path*"],
 };
