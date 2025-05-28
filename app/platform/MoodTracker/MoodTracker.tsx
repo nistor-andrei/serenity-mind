@@ -15,7 +15,7 @@ const MoodTracker = () => {
 
   return (
     <Card>
-      <h2 className="text-lg font-semibold mb-4">How are you feeling today?</h2>
+      <h2 className="text-lg font-semibold mb-4">Mood Tracker</h2>
       <div className="flex gap-5 items-center">
         {moods.map(({ label, icon: Icon }) => (
           <button

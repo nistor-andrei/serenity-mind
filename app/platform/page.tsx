@@ -19,22 +19,14 @@ export default async function PlatformPage() {
   const user = await getUser();
 
   return (
-    <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-      <div className="xl:col-span-3">
-        <Welcome name={user.user.user_metadata.full_name} />
-      </div>
-      <div className="xl:col-span-2 ">
+    <div className="container mx-auto p-6 space-y-6">
+      <Welcome name={user.user.user_metadata.full_name} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <MoodTracker />
-      </div>
-      <div className="xl:col-span-2">
         <WeeklyOverview />
-      </div>
-      <div className="xl:col-span-1">
         <MindfulnessTip />
-      </div>
-      <div className="xl:col-span-2">
         <JournalEntry />
       </div>
-    </section>
+    </div>
   );
 }
