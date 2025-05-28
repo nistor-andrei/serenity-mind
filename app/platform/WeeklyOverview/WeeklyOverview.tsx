@@ -25,7 +25,7 @@ const WeeklyOverview = () => {
       <LineChart
         data={data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        width={600}
+        width={500}
         height={300}
       >
         <CartesianGrid strokeDasharray="3 3" />
