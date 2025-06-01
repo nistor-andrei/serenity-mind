@@ -6,11 +6,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body className="bg-[--color-violet-900]">
+    <body className="bg-layout">
       <div className="flex h-screen overflow-hidden">
         <Sidebar />
         <main className="flex-1 overflow-y-auto pl-64">
-          <div className="h-full px-6 py-6">{children}</div>
+          <div className="h-full px-6 py-4">{children}</div>
         </main>
       </div>
     </body>
