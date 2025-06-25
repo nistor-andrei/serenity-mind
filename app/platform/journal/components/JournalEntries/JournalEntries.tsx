@@ -1,6 +1,9 @@
 "use client";
 
+import { DatePicker } from "@/components/DatePicker/DatePicker";
+import { format } from "date-fns";
 import { supabase } from "lib/supabaseClient";
+import { useState } from "react";
 import useSWR from "swr";
 
 interface JournalEntry {
@@ -18,17 +21,24 @@ const fetcher = async (url: string) => {
   } = await supabase.auth.getUser();
   if (!user) return [];
 
-  const response = await fetch(`${url}?userId=${user.id}`);
+  const response = await fetch(`${url}&userId=${user.id}`);
   const { data } = await response.json();
   return data || [];
 };
 
 export const JournalEntries = () => {
+  const [date, setDate] = useState<Date | null>(new Date());
+
+  const formattedDate = date ? format(date, "yyyy-MM-dd") : "";
+
   const {
     data: entries,
     error,
     isLoading,
-  } = useSWR<JournalEntry[]>("/api/journal-entries", fetcher);
+  } = useSWR<JournalEntry[]>(
+    `/api/journal-entries?date=${formattedDate}`,
+    fetcher
+  );
 
   if (isLoading) {
     return <div className="mt-6">Loading entries...</div>;
@@ -48,6 +58,7 @@ export const JournalEntries = () => {
 
   return (
     <div className="mt-6 space-y-1">
+      <DatePicker date={date} setDate={setDate} />
       {entries.map((entry) => (
         <div key={entry.id} className="flex flex-col space-y-1">
           {/* User Input */}

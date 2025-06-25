@@ -12,9 +12,10 @@ import { Dispatch, SetStateAction } from "react";
 type DatePickerProps = {
   date: Date | null;
   setDate: Dispatch<SetStateAction<Date | null>>;
+  onSelect?: () => void;
 };
 
-export function DatePicker({ date, setDate }: DatePickerProps) {
+export function DatePicker({ date, setDate, onSelect }: DatePickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -27,7 +28,10 @@ export function DatePicker({ date, setDate }: DatePickerProps) {
         <Calendar
           mode="single"
           selected={date ?? undefined}
-          onSelect={(selected) => setDate(selected ?? null)}
+          onSelect={(selected) => {
+            if (onSelect) onSelect();
+            setDate(selected ?? null);
+          }}
           initialFocus
         />
       </PopoverContent>

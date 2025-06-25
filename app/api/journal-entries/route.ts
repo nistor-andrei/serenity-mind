@@ -5,6 +5,7 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");
+    const date = searchParams.get("date");
     const supabase = await createClient();
 
     if (!userId) {
@@ -15,6 +16,7 @@ export async function GET(req: Request) {
       .from("journal_entries")
       .select("*")
       .eq("user_id", userId)
+      .gte("date", date)
       .order("created_at", { ascending: false });
 
     if (error) {
