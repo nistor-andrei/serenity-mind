@@ -21,12 +21,12 @@ export const SidebarLink = ({
     <Link
       href={href}
       className={clsx(
-        "flex items-center gap-3 px-3 py-2 rounded-xl text-light-gray transition",
+        "flex items-center gap-3 px-3 py-2 rounded-xl  transition",
         isActive && "bg-light-violet"
       )}
     >
       <span className={clsx(isActive && "color-violet")}>{icon}</span>
-      <span>{label}</span>
+      <span className={clsx(isActive && "color-black")}>{label}</span>
     </Link>
   );
 };

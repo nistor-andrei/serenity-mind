@@ -1,10 +1,9 @@
 import { createClient } from "lib/supabaseServer";
 import { redirect } from "next/navigation";
-import JournalEntry from "./JournalEntry/JournalEntry";
-import { MindfulnessTip } from "./MindfulnessTips/MindfulnessTips";
-import MoodTracker from "./MoodTracker/MoodTracker";
-import WeeklyOverview from "./WeeklyOverview/WeeklyOverview";
-import { Welcome } from "./Welcome/Welcome";
+import JournalEntry from "./components/JournalEntry/JournalEntry";
+import { MindfulnessTip } from "./components/MindfulnessTips/MindfulnessTips";
+import WeeklyOverview from "./components/WeeklyOverview/WeeklyOverview";
+import { Welcome } from "./components/Welcome/Welcome";
 
 async function getUser() {
   const supabase = await createClient();
@@ -22,7 +21,6 @@ export default async function PlatformPage() {
     <div className="container mx-auto p-6 space-y-6">
       <Welcome name={user.user.user_metadata.full_name} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <MoodTracker />
         <WeeklyOverview />
         <MindfulnessTip />
         <JournalEntry />
