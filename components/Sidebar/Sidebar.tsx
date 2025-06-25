@@ -5,7 +5,7 @@ import { SidebarLink } from "./Link";
 export const Sidebar = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 bg-sidebar p-4 flex flex-col justify-between border-r-1 border-gray-200">
+    <aside className="fixed top-0 left-0 h-screen w-64 bg-violet-900 p-4 flex flex-col justify-between border-r-1 border-gray-200">
       <div className="flex items-center mb-10 shrink-0">
         <Image src="/Logo.svg" alt="logo" width={40} height={40} />
         <span className="ml-3 text-xl font-semibold text-light-gray">
@@ -19,12 +19,12 @@ export const Sidebar = () => {
           label="Dashboard"
         />
         <SidebarLink
-          href="/platform/journal"
+          href="/journal"
           icon={<Book size={20} />}
           label="Journal"
         />
         <SidebarLink
-          href="/platform/statistics"
+          href="/statistics"
           icon={<BarChart2 size={20} />}
           label="Statistics"
         />
