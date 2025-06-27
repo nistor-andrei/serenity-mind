@@ -1,10 +1,11 @@
 "use client";
+import { Slider } from "@/components/shadcn/ui/slider";
+import { cn } from "@/lib/utils";
 import { Brain } from "lucide-react";
 import { useState } from "react";
 
 export function AnxietyLevel() {
-  const [value, setValue] = useState(5);
-
+  const [value, setValue] = useState([1]);
   return (
     <section className="bg-white w-1/2">
       <div className="flex gap-1 items-center">
@@ -15,13 +16,12 @@ export function AnxietyLevel() {
       </div>
       <div className="flex gap-1 items-center mt-2">
         <p className="text-light-gray">Low</p>
-        <input
-          type="range"
-          min="1"
-          max="10"
+        <Slider
           value={value}
-          onChange={(e) => setValue(Number(e.target.value))}
-          className="w-full accent-violet"
+          onValueChange={setValue}
+          max={10}
+          step={1}
+          className={cn("w-[100%]")}
         />
         <p className="text-light-gray">High</p>
         <div className="ml-2 text-xl font-bold text-violet">{value}</div>

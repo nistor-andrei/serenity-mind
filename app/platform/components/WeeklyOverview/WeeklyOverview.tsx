@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+
 const data = [
   { name: "Mon", sleep: 6, anxiety: 4 },
   { name: "Tue", sleep: 7, anxiety: 3 },

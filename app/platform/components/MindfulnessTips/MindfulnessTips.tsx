@@ -16,7 +16,7 @@ export const MindfulnessTip = ({ tip }: MindfulnessTipProp) => {
         className="color-light-violet"
       />
       <h2 className="text-xl font-semibold">Today&apos;s mindfulness tip</h2>
-      <p className="text-sm text-center text-light-gray">{tip || "Test"}</p>
+      <p className="text-sm text-center text-light-gray">{tip || ""}</p>
     </Card>
   );
 };

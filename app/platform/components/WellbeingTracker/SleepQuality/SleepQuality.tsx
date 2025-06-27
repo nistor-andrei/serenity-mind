@@ -1,8 +1,9 @@
+import { Toggle } from "@/components/shadcn/ui/toggle";
 import { Bed } from "lucide-react";
 import { useState } from "react";
 
 export function SleepQuality() {
-  const [sleep, setSleep] = useState<number | null>(null);
+  const [sleep, setSleep] = useState<number | undefined>(undefined);
 
   return (
     <section className="">
@@ -14,17 +15,17 @@ export function SleepQuality() {
       </div>
       <div className="flex flex-wrap gap-2">
         {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
-          <button
+          <Toggle
             key={num}
-            onClick={() => setSleep(num)}
-            className={`w-10 h-10 rounded-full border text-sm font-medium transition ${
-              sleep === num
-                ? "bg-purple-600 text-white"
-                : "bg-gray-100 hover:bg-gray-200"
-            }`}
+            variant="outline"
+            pressed={sleep === num}
+            onPressedChange={(pressed) => {
+              if (pressed) setSleep(num);
+              else setSleep(undefined);
+            }}
           >
             {num}
-          </button>
+          </Toggle>
         ))}
       </div>
       {sleep && (
