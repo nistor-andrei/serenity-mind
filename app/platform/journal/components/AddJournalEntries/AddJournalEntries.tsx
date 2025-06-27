@@ -1,6 +1,7 @@
 "use client";
-import { Button } from "*/components/shadcn/ui/button";
-import { Textarea } from "*/components/shadcn/ui/textarea";
+
+import { Button } from "@/components/shadcn/ui/button";
+import { Textarea } from "@/components/shadcn/ui/textarea";
 import { format } from "date-fns";
 import { supabase } from "lib/supabaseClient";
 import { Lightbulb } from "lucide-react";
