@@ -19,7 +19,7 @@ export const Sidebar = () => {
           label="Dashboard"
         />
         <SidebarLink
-          href="/journal"
+          href="/platform/journal"
           icon={<Book size={20} />}
           label="Journal"
         />
