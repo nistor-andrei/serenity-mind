@@ -1,4 +1,5 @@
 "use client";
+import { registerUserAction } from "@/app/actions/register";
 import { Card } from "@/components/Card/Card";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -12,95 +13,46 @@ import { Input } from "@/components/shadcn/ui/input";
 import { Label } from "@/components/shadcn/ui/label";
 import { TabsContent } from "@radix-ui/react-tabs";
 import { Eye, EyeClosed } from "lucide-react";
-import { ChangeEvent, useReducer, useState } from "react";
-import useSWRMutation from "swr/mutation";
+import { ChangeEvent, useActionState, useReducer, useState } from "react";
 import { initialStateUser, userReducer, UserState } from "./utils";
-
-type RegisterBody = {
-  name: string;
-  email: string;
-  password: string;
-  action: string;
-};
-
-const registerUser = async (url: string, { arg }: { arg: RegisterBody }) => {
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(arg),
-  });
-
-  if (!res.ok) throw new Error("Failed to register");
-
-  return res.json();
-};
 
 export const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [showConfirmPassword, setConfirmPassword] = useState(false);
   const [state, dispatch] = useReducer(userReducer, initialStateUser);
-  const { trigger } = useSWRMutation("/api/auth/register", registerUser);
+  const [stateForm, formAction, pending] = useActionState(
+    registerUserAction,
+    initialStateUser
+  );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    const password = name === "password" ? value : state.password.value;
-    const confirmPassword =
-      name === "confirmPassword" ? value : state.confirmPassword.value;
 
     dispatch({
       type: "SET_VALUE",
       field: name as keyof UserState,
       value: value,
     });
-
-    if (password !== confirmPassword) {
-      dispatch({
-        type: "SET_ERROR",
-        field: "confirmPassword",
-        error: "Password and Confirm password doesn't match",
-      });
-    } else {
-      dispatch({
-        type: "SET_ERROR",
-        field: "confirmPassword",
-        error: "",
-      });
-    }
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const body: RegisterBody = {
-        name: state.name.value,
-        email: state.email.value,
-        password: state.password.value,
-        action: "register",
-      };
-      await trigger(body);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (
     <TabsContent value="register">
       <Card className="w-full">
-        <CardHeader>
-          <CardTitle>Register</CardTitle>
-          <CardDescription className="mb-4">
-            Sign up to start using SerenityMind.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-6 w-full">
-          <form>
+        <form action={formAction}>
+          <CardHeader>
+            <CardTitle>Register</CardTitle>
+            <CardDescription className="mb-4">
+              Sign up to start using SerenityMind.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-6 w-full">
             <div className="grid gap-3 mb-4">
               <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 placeholder="Your name"
-                value={state.name.value}
+                value={state.name}
                 name="name"
                 onChange={handleInputChange}
               />
@@ -112,7 +64,7 @@ export const RegisterForm = () => {
                 name="email"
                 placeholder="Your email"
                 type="email"
-                value={state.email.value}
+                value={state.email}
                 onChange={handleInputChange}
                 autoComplete="email"
               />
@@ -124,7 +76,7 @@ export const RegisterForm = () => {
                 name="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Your password"
-                value={state.password.value}
+                value={state.password}
                 autoComplete="new-password"
                 onChange={handleInputChange}
               />
@@ -145,13 +97,13 @@ export const RegisterForm = () => {
                 name="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Your confirm password"
-                value={state.confirmPassword.value}
+                value={state.confirmPassword}
                 onChange={handleInputChange}
                 autoComplete="new-password"
                 className="mb-1"
               />
               <p className="text-red-500 text-sm mb-4">
-                {state.confirmPassword.error}
+                {state.confirmPassword}
               </p>
               <Button
                 variant="ghost"
@@ -161,13 +113,13 @@ export const RegisterForm = () => {
                 {showConfirmPassword ? <Eye /> : <EyeClosed />}
               </Button>
             </div>
-          </form>
-        </CardContent>
-        <CardFooter className="mt-4">
-          <Button className="w-full" onClick={handleSubmit}>
-            Register
-          </Button>
-        </CardFooter>
+          </CardContent>
+          <CardFooter className="mt-4">
+            <Button className="w-full" type="submit">
+              Register
+            </Button>
+          </CardFooter>
+        </form>
       </Card>
     </TabsContent>
   );

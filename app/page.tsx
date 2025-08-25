@@ -8,7 +8,6 @@ export default async function Home() {
   return (
     <>
       <Navbar />
-
       <Hero />
       <FeaturesSection />
       <HowItWorks />
