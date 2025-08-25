@@ -1,10 +1,10 @@
-import { Button } from "*/components/shadcn/ui/button";
-import { Calendar } from "*/components/shadcn/ui/calendar";
+import { Button } from "@/components/shadcn/ui/button";
+import { Calendar } from "@/components/shadcn/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "*/components/shadcn/ui/popover";
+} from "@/components/shadcn/ui/popover";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
