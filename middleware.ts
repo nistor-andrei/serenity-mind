@@ -1,23 +1,36 @@
-import { createClient } from "lib/supabaseServer";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { isTokenExpired } from "@/utils/utils";
+import { jwtVerify } from "jose";
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const token = request.cookies.get("Authorization")?.value;
+  const pathname = request.nextUrl.pathname;
 
-  if (!user && request.nextUrl.pathname.startsWith("/platform")) {
-    const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/login";
-    redirectUrl.searchParams.set("next", request.nextUrl.pathname);
-    return NextResponse.redirect(redirectUrl);
+  if (!token) {
+    if (pathname.startsWith("/platform")) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    return NextResponse.next();
   }
 
-  return NextResponse.next();
+  try {
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+    const { payload } = await jwtVerify(token, secret);
+    if (payload.exp && isTokenExpired(payload.exp)) {
+      if (pathname.startsWith("/platform")) {
+        return NextResponse.redirect(new URL("/login", request.url));
+      }
+      return NextResponse.next();
+    }
+  } catch {
+    if (pathname.startsWith("/platform")) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+    return NextResponse.next();
+  }
 }
 
 export const config = {
-  matcher: ["/platform/:path*"],
+  matcher: ["/platform/:path*", "/login"],
 };

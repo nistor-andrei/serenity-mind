@@ -1,60 +1,11 @@
 "use client";
-
 import { DatePicker } from "@/components/DatePicker/DatePicker";
-import { format } from "date-fns";
-import { supabase } from "lib/supabaseClient";
 import { useState } from "react";
-import useSWR from "swr";
-
-interface JournalEntry {
-  id: string;
-  date: string;
-  user_input: string;
-  ai_response: string;
-  created_at: string;
-  user_id: string;
-}
-
-const fetcher = async (url: string) => {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return [];
-
-  const response = await fetch(`${url}&userId=${user.id}`);
-  const { data } = await response.json();
-  return data || [];
-};
 
 export const JournalEntries = () => {
   const [date, setDate] = useState<Date | null>(new Date());
 
-  const formattedDate = date ? format(date, "yyyy-MM-dd") : "";
-
-  const {
-    data: entries,
-    error,
-    isLoading,
-  } = useSWR<JournalEntry[]>(
-    `/api/journal-entries?date=${formattedDate}`,
-    fetcher
-  );
-
-  if (isLoading) {
-    return <div className="mt-6">Loading entries...</div>;
-  }
-
-  if (error) {
-    return <div className="mt-6 text-red-500">Error loading entries</div>;
-  }
-
-  if (!entries || entries.length === 0) {
-    return (
-      <div className="mt-6 text-gray-500 italic">
-        No journal entries yet. Start by writing your first entry above!
-      </div>
-    );
-  }
+  const entries = [{ id: 1, user_input: "", ai_response: "" }];
 
   return (
     <div className="mt-6 space-y-1">

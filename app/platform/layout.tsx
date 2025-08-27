@@ -6,13 +6,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body className="bg-layout">
+    <section className="bg-layout">
       <div className="flex h-screen overflow-hidden">
         <Sidebar />
         <main className="flex-1 overflow-y-auto pl-64">
           <div className="h-full px-6 py-4">{children}</div>
         </main>
       </div>
-    </body>
+    </section>
   );
 }
