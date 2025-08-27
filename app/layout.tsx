@@ -57,7 +57,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${openSans.variable} antialiased`}>
         {children}
-        <Toaster position="top-right" expand={false} />
+        <Toaster position="top-right" expand={false} richColors />
       </body>
     </html>
   );

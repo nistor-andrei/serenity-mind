@@ -1,6 +1,6 @@
 "use client";
 import { Slider } from "@/components/shadcn/ui/slider";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import { Brain } from "lucide-react";
 import { useState } from "react";
 

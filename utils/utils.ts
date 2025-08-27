@@ -1,6 +1,11 @@
-import { neon } from "@neondatabase/serverless";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is not set");
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
-export const sql = neon(process.env.DATABASE_URL);
+
+export function isTokenExpired(exp: number): boolean {
+  const now = Math.floor(Date.now() / 1000);
+  return exp < now;
+}

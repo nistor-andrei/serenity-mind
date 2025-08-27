@@ -6,7 +6,7 @@ import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 export default function LoginPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden w-full max-w-6xl h-200">
+      <div className="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden w-full md:max-w-4xl h-200 md:h-150">
         <div className="hidden md:flex items-center justify-center bg-[var(--light-violet)] w-full md:w-1/2 p-8">
           <Image
             src="/meditate.png"

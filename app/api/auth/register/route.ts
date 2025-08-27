@@ -1,4 +1,4 @@
-import { sql } from "@/utils/utils";
+import { sql } from "@/utils/db";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     if (dbEmail.length > 0) {
       return NextResponse.json(
         {
-          error: "Invalid credentials",
+          message: "Invalid credentials",
         },
         { status: 400 }
       );

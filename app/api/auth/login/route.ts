@@ -1,4 +1,4 @@
-import { sql } from "@/utils/utils";
+import { sql } from "@/utils/db";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
@@ -10,14 +10,17 @@ export async function POST(req: NextRequest) {
 
   const emailDb = await sql`SELECT email FROM users WHERE email=${email}`;
   const passwordDb =
-    await sql`SELECT password_hash FROM users WHERE password_hash=${password}`;
+    await sql`SELECT password_hash FROM users WHERE email=${email}`;
   const isMatchPassword = await bcrypt.compare(
     password,
     passwordDb[0].password_hash
   );
 
   if (email !== emailDb && isMatchPassword) {
-    NextResponse.json({ error: "Invalid credentials" }, { status: 400 });
+    return NextResponse.json(
+      { message: "Invalid credentials" },
+      { status: 400 }
+    );
   } else {
     const token = jwt.sign(
       {
@@ -26,7 +29,11 @@ export async function POST(req: NextRequest) {
       JWT_SECRET,
       { expiresIn: "1day" }
     );
-    NextResponse.next().cookies.set({
+    const res = NextResponse.json(
+      { message: "Login successfully" },
+      { status: 200 }
+    );
+    res.cookies.set({
       name: "Authorization",
       value: token,
       httpOnly: true,
@@ -35,6 +42,6 @@ export async function POST(req: NextRequest) {
       path: "/",
       maxAge: 86400,
     });
-    NextResponse.json({ status: 200 });
+    return res;
   }
 }
