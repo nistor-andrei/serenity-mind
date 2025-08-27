@@ -1,10 +1,12 @@
+import { Tabs, TabsList, TabsTrigger } from "@/components/shadcn/ui/tabs";
 import Image from "next/image";
-import { signInWithGoogle } from "utils/actions";
+import { LoginForm } from "./components/LoginForm/LoginForm";
+import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 
 export default function LoginPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden w-full max-w-3xl h-110">
+      <div className="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden w-full md:max-w-4xl h-200 md:h-150">
         <div className="hidden md:flex items-center justify-center bg-[var(--light-violet)] w-full md:w-1/2 p-8">
           <Image
             src="/meditate.png"
@@ -16,26 +18,18 @@ export default function LoginPage() {
           />
         </div>
         <div className="flex flex-col items-center justify-center w-full md:w-1/2 p-8">
-          <h1 className="text-3xl font-bold text-[var(--violet)] mb-2">
-            Welcome Back
-          </h1>
-          <p className="text-md text-[var(--light-gray)] mb-8 text-center">
-            Sign in to SerenityMind to start your journey to inner peace.
-          </p>
-          <form>
-            <button
-              formAction={signInWithGoogle}
-              className="flex items-center gap-2 text-black border border-gray-200 bg-white cursor-pointer px-6 py-3 rounded-xl font-medium transition hover:bg-gray-50 shadow"
-            >
-              <Image
-                src="/google-auth.svg"
-                alt="google-logo"
-                width={20}
-                height={20}
-              />
-              Sign in with Google
-            </button>
-          </form>
+          <Tabs defaultValue="login" className="w-full">
+            <TabsList>
+              <TabsTrigger value="login" className="cursor-pointer">
+                Login
+              </TabsTrigger>
+              <TabsTrigger value="register" className="cursor-pointer">
+                Register
+              </TabsTrigger>
+            </TabsList>
+            <RegisterForm />
+            <LoginForm />
+          </Tabs>
         </div>
       </div>
     </div>
