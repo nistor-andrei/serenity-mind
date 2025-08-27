@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
     password,
     passwordDb[0].password_hash
   );
+  const userId = await sql`SELECT id from users WHERE email=${email}`;
 
   if (email !== emailDb && isMatchPassword) {
     return NextResponse.json(
@@ -25,6 +26,7 @@ export async function POST(req: NextRequest) {
     const token = jwt.sign(
       {
         email: email,
+        userId: userId[0].id,
       },
       JWT_SECRET,
       { expiresIn: "1day" }

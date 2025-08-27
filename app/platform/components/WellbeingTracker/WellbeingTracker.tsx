@@ -1,6 +1,5 @@
 "use client";
 import { Card } from "components/Card/Card";
-
 import { AnxietyLevel } from "./AnxietyLevel/AnxietyLevel";
 import { SleepQuality } from "./SleepQuality/SleepQuality";
 

@@ -9,6 +9,8 @@ export interface UserLogin {
   password: string;
 }
 
+export type UserInfo = Omit<UserRegister, "password">;
+
 export async function createUser(url: string, { arg }: { arg: UserRegister }) {
   const res = await fetch(url, {
     method: "POST",
