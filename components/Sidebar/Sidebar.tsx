@@ -1,9 +1,11 @@
 import { BarChart2, Book, Home, Settings } from "lucide-react";
 import Image from "next/image";
 import { SidebarLink } from "./Link";
+import { Logout } from "./Logout";
 
 export const Sidebar = () => {
   const currentYear = new Date().getFullYear();
+
   return (
     <aside className="fixed top-0 left-0 h-screen w-64 bg-violet-900 p-4 flex flex-col justify-between border-r-1 border-gray-200">
       <div className="flex items-center mb-10 shrink-0">
@@ -12,7 +14,7 @@ export const Sidebar = () => {
           SerenityMind
         </span>
       </div>
-      <nav className="space-y-3 flex-grow overflow-y-auto">
+      <nav className="space-y-3 overflow-y-auto justify-start h-full">
         <SidebarLink
           href="/platform"
           icon={<Home size={20} />}
@@ -33,8 +35,8 @@ export const Sidebar = () => {
           icon={<Settings size={20} />}
           label="Settings"
         />
+        <Logout />
       </nav>
-
       <div className="text-sm text-light-gray mt-4 shrink-0">
         © {currentYear} SerenityMind
       </div>
