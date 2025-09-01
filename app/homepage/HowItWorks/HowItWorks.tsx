@@ -2,9 +2,9 @@ import { steps } from "./utils";
 
 const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="bg-violet py-12 scroll-mt-20">
+    <section id="how-it-works" className="bg-gray-50 py-24 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl  text-white font-bold mb-2 ">
+        <h2 className="text-3xl  text-black font-bold mb-2 ">
           How SerenityMind Works
         </h2>
         <p className="text-md text-light-violet mb-12">

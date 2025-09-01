@@ -1,19 +1,15 @@
-import Image from "next/image";
-
 const StartNow = () => {
   return (
-    <section className="bg-light-violet mx-20 my-10 rounded-4xl text-neutral-800 flex flex-col items-center py-10">
-      <Image src="/cta.svg" alt="Cta" width={300} height={150} />
-      <h2 className="text-3xl font-bold mb-4">
-        Your Journey to Inner Peace Begins Here
+    <section className="bg-[linear-gradient(135deg,#f5f3ff_0%,#e9d5ff_100%)] py-24  text-neutral-800 text-center">
+      <h2 className="text-4xl font-bold mt-5 mx-auto">
+        Ready to begin your journey to a more serene you?
       </h2>
-      <p className="text-sm mb-4 w-128 text-center">
-        Embrace a calmer mind, restful sleep, and a deeper connection with
-        yourself. SerenityMind guides you every step of the way toward a more
-        harmonious life.
+      <p className="mt-5 text-gray-600 text-xl max-w-2xl mx-auto">
+        Join thousands of others who are sleeping better, feeling calmer, and
+        living more mindfully with SerenityMind.
       </p>
-      <button className=" bg-violet  cursor-pointer text-white font-semibold px-8 py-4 rounded-2xl text-sm md:text-base hover:opacity-90 transition">
-        Join now
+      <button className=" bg-violet  cursor-pointer text-white font-semibold px-8 py-4 rounded-2xl text-sm md:text-base hover:opacity-90 transition mt-10">
+        Start My Journey Today
       </button>
     </section>
   );

@@ -12,6 +12,7 @@
   --color-violet-900: #fbf6ff;
   --color-sidebar: #fefcff;
   --color-layout: #f9fafb;
+  --gradient-hero: linear-gradient(135deg, #f5f3ff 0%, #e9d5ff 100%);
 }
 
 body {
