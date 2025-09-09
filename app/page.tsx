@@ -1,3 +1,4 @@
+import { Footer } from "@/components/Footer/Footer";
 import { Navbar } from "components/Navbar/Navbar";
 import FeaturesSection from "./homepage/FeaturesSection";
 import Hero from "./homepage/Hero";
@@ -12,6 +13,7 @@ export default async function Home() {
       <FeaturesSection />
       <HowItWorks />
       <StartNow />
+      <Footer />
     </>
   );
 }

@@ -11,7 +11,8 @@ import {
 import { Input } from "@/components/shadcn/ui/input";
 import { Label } from "@/components/shadcn/ui/label";
 import { TabsContent } from "@/components/shadcn/ui/tabs";
-import { loginUser } from "@/lib/api/auth";
+import { loginUser } from "@/services/authServices";
+
 import { Eye, EyeClosed } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -99,6 +100,7 @@ export const LoginForm = () => {
               className="w-full cursor-pointer"
               disabled={isMutating}
               type="submit"
+              isLoading={isMutating}
             >
               Login
             </Button>
