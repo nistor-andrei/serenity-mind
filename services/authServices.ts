@@ -1,3 +1,6 @@
+import { fetchWithAuth } from "@/lib/api/client";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+
 export interface UserRegister {
   name: string;
   email: string;
@@ -45,3 +48,19 @@ export async function loginUser(url: string, { arg }: { arg: UserLogin }) {
 
   return { data, ok: res.ok };
 }
+
+export const handleLogout = async (
+  navigation: AppRouterInstance,
+  toast: { success: (msg: string) => void; error: (msg: string) => void }
+) => {
+  try {
+    const res = await fetchWithAuth<{ message: string }>(
+      "/api/auth/logout",
+      "POST"
+    );
+    toast.success(res.message);
+    navigation.push("/login");
+  } catch {
+    toast.error("Something happened");
+  }
+};

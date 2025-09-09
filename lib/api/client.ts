@@ -1,4 +1,4 @@
-type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+import { HttpMethod } from "@/types/types";
 
 export const fetchWithAuth = async <T>(
   url: string,

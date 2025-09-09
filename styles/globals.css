@@ -4,9 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-light-gray: #4b4c4d;
+  --color-light-gray: #6b7280;
   --color-violet: #805ad5;
   --color-hover-violet: #6b45c2;
+  --color-vibrant-violet: #7c3aed;
   --color-serenity-blue: #4a90e2;
   --color-light-violet: #e9d5ff;
   --color-violet-900: #fbf6ff;

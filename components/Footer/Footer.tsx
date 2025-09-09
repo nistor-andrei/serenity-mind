@@ -1,4 +1,5 @@
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-white py-12">
       <div className="container mx-auto px-6 text-center">
@@ -20,7 +21,7 @@ export const Footer = () => {
           </a>
         </div>
         <p className="text-gray-400">
-          © 2025 SerenityMind. All rights reserved.
+          © {currentYear} SerenityMind. All rights reserved.
         </p>
       </div>
     </footer>

@@ -30,7 +30,7 @@ const features = [
 export default function FeaturesSection() {
   return (
     <section id="features" className="py-24 px-6 bg-white scroll-mt-16">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-dark mb-4  bg-clip-text">
           Your Personalized Path to Wellness
         </h2>

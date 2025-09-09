@@ -9,19 +9,19 @@ export function Navbar() {
       <div className="flex items-center space-x-8 justify-self-center">
         <Link
           href="#hero"
-          className="text-light-gray hover:text-violet font-medium transition-colors"
+          className=" hover:text-violet font-medium transition-colors"
         >
           Benefits
         </Link>
         <Link
           href="#features"
-          className="text-light-gray hover:text-violet font-medium transition-colors"
+          className=" hover:text-violet font-medium transition-colors"
         >
           Features
         </Link>
         <Link
           href="#how-it-works"
-          className="text-light-gray hover:text-violet font-medium transition-colors"
+          className="hover:text-violet font-medium transition-colors"
         >
           How It Works
         </Link>

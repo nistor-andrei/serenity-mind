@@ -10,7 +10,8 @@ import {
 } from "@/components/shadcn/ui/card";
 import { Input } from "@/components/shadcn/ui/input";
 import { Label } from "@/components/shadcn/ui/label";
-import { createUser } from "@/lib/api/auth";
+import { createUser } from "@/services/authServices";
+
 import { TabsContent } from "@radix-ui/react-tabs";
 import { Eye, EyeClosed } from "lucide-react";
 import { ChangeEvent, useState } from "react";
