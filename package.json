@@ -27,7 +27,7 @@
     "date-fns": "^4.1.0",
     "husky": "^9.1.7",
     "init": "^0.1.2",
-    "lucide-react": "^0.541.0",
+    "lucide-react": "^0.544.0",
     "jose": "^6.1.0",
     "jsonwebtoken": "^9.0.2",
     "next": "15.4.6",
