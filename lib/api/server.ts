@@ -7,10 +7,12 @@ export const fetchServerSide = async <T>(
 ): Promise<T> => {
   const cookieStore = await cookies();
   const cookieHeader = cookieStore.get("Authorization")?.value ?? "";
+  const csrfToken = cookieStore.get("csrfToken")?.value ?? "";
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}${url}`, {
     method,
     headers: {
-      cookie: `Authorization=${cookieHeader}`,
+      cookie: `Authorization=${cookieHeader}; csrfToken=${csrfToken}`,
     },
   });
   return res.json();
