@@ -1,8 +1,5 @@
-import Tokens from "csrf";
 import { jwtVerify } from "jose";
 import { NextRequest, NextResponse } from "next/server";
-
-const tokens = new Tokens();
 
 export async function verifyToken(token: string) {
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
