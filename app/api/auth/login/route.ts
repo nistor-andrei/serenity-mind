@@ -1,9 +1,11 @@
 import { sql } from "@/utils/db";
 import bcrypt from "bcryptjs";
+import Tokens from "csrf";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
+const tokens = new Tokens();
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
@@ -15,6 +17,7 @@ export async function POST(req: NextRequest) {
     password,
     passwordDb[0].password_hash
   );
+
   const userId = await sql`SELECT id from users WHERE email=${email}`;
 
   if (email !== emailDb && isMatchPassword) {
@@ -31,6 +34,9 @@ export async function POST(req: NextRequest) {
       JWT_SECRET,
       { expiresIn: "1day" }
     );
+
+    const secret = tokens.secretSync();
+    const csrfToken = tokens.create(secret);
     const res = NextResponse.json(
       { message: "Login successfully" },
       { status: 200 }
@@ -43,6 +49,13 @@ export async function POST(req: NextRequest) {
       sameSite: "lax",
       path: "/",
       maxAge: 86400,
+    });
+
+    res.cookies.set("csrfToken", csrfToken, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
     });
     return res;
   }

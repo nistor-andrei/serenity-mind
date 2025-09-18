@@ -4,9 +4,11 @@ import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const token = request.cookies.get("Authorization")?.value;
+  const csrfToken = request.cookies.get("csrfToken")?.value;
+
   const pathname = request.nextUrl.pathname;
 
-  if (!token) {
+  if (!token || !csrfToken) {
     if (pathname.startsWith("/platform")) {
       return NextResponse.redirect(new URL("/login", request.url));
     }

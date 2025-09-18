@@ -18,9 +18,15 @@ export function withAuth(handler: (req: NextRequest) => Promise<NextResponse>) {
       ?.split("; ")
       .find((c) => c.startsWith("Authorization="))
       ?.split("=")[1];
+    const csrfToken = req.headers
+      .get("cookie")
+      ?.split("; ")
+      .find((c) => c.startsWith("csrfToken="))
+      ?.split("=")[1];
+
     const { valid } = await verifyToken(token || "");
 
-    if (!valid) {
+    if (!csrfToken || !valid) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
