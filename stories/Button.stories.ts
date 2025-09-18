@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    variant: "default",
+    variant: "primary",
     children: "Primary",
   },
 };
@@ -36,7 +36,7 @@ export const Secondary: Story = {
 export const Destructive: Story = {
   args: {
     variant: "destructive",
-    children: "destructive",
+    children: "Destructive",
   },
 };
 
@@ -58,5 +58,13 @@ export const Link: Story = {
   args: {
     variant: "link",
     children: "Link",
+  },
+};
+
+export const ButtonLoading: Story = {
+  args: {
+    variant: "primary",
+
+    isLoading: true,
   },
 };

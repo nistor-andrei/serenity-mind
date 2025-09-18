@@ -6,12 +6,12 @@ import { cn } from "@/utils/utils";
 import { Loader2 } from "lucide-react";
 
 const buttonVariants = cva(
-  "inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap  text-md  transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center hover:opacity-90 rounded-full text-lg cursor-pointer justify-center gap-2 whitespace-nowrap  transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
         primary:
-          "bg-vibrant-violet text-white rounded-full font-semibold text-lg transition-all duration-300 transform shadow-lg hover:shadow-xl hover:opacity-90",
+          "bg-vibrant-violet text-white rounded-full  text-lg transition-all duration-300 transform shadow-lg hover:shadow-xl hover:opacity-90",
         default:
           "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 ",
         destructive:
@@ -63,6 +63,7 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      disabled={isLoading}
       type={type}
       {...props}
     >
