@@ -46,7 +46,7 @@
     "@chromatic-com/storybook": "^4.1.1",
     "@eslint/eslintrc": "^3",
     "@storybook/addon-a11y": "^9.1.5",
-    "@storybook/addon-docs": "^9.1.5",
+    "@storybook/addon-docs": "^9.1.6",
     "@storybook/addon-onboarding": "^9.1.5",
     "@storybook/addon-vitest": "^9.1.5",
     "@storybook/nextjs-vite": "^9.1.5",
